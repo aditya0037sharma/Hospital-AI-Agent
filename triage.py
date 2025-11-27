@@ -1,9 +1,8 @@
 """
 ---
+Author: Hitesh & Aditya 
+
 title: Medical Office Triage System
-category: complex-agents
-tags: [multi_agent, agent_transfer, medical, context_preservation, chat_history]
-difficulty: advanced
 description: Multi-agent medical triage system with specialized departments
 demonstrates:
   - Multiple specialized agents (triage, support, billing)
@@ -172,6 +171,13 @@ class BillingAgent(BaseAgent):
 
 
 async def entrypoint(ctx: JobContext):
+    # Log startup information
+    logger.info("=" * 60)
+    logger.info("Medical Office Triage System")
+    logger.info("Created by: Hitesh & Aditya")
+    logger.info("=" * 60)
+    logger.info("Initializing multi-agent medical triage system...")
+    
     userdata = UserData(ctx=ctx)
     triage_agent = TriageAgent()
     support_agent = SupportAgent()
@@ -183,6 +189,9 @@ async def entrypoint(ctx: JobContext):
         "support": support_agent,
         "billing": billing_agent
     })
+    
+    logger.info("All agents initialized successfully")
+    logger.info("Starting session with Triage Agent...")
 
     session = AgentSession[UserData](userdata=userdata)
 
